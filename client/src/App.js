@@ -109,6 +109,7 @@ function App() {
     Axios.get(`http://localhost:3001/search${search}`).then((response) => {
       // access endpoint
       setEmployeeList(response.data);
+      setSearch("");
     });
   };
 
@@ -171,12 +172,19 @@ function App() {
               onClick={() => {
                 getSearch(search);
               }}
+              className="sortButtons"
             >
               Search
             </button>
-            <button onClick={get3Employees}>Show 3</button>
-            <button onClick={get5Employees}>Show 5</button>
-            <button onClick={getEmployees}>Show All</button>
+            <button onClick={get3Employees} className="sortButtons">
+              Show 3
+            </button>
+            <button onClick={get5Employees} className="sortButtons">
+              Show 5
+            </button>
+            <button onClick={getEmployees} className="sortButtons">
+              Show All
+            </button>
           </div>
           <table>
             <tr>
@@ -196,7 +204,7 @@ function App() {
                   <td>{val.name}</td>
                   <td>{val.position}</td>
                   <td>{val.task}</td>
-                  <td>{val.wage}</td>
+                  <td>${parseInt(val.wage, 10) / 1000},000</td>
                   <td>
                     <div>
                       <input

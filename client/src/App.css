@@ -57,6 +57,12 @@ button {
   cursor: pointer;
 }
 
+.sortButtons {
+  height: 2rem;
+  width: fit-content;
+  margin-left: 1rem;
+}
+
 .employeeButton {
   width: auto;
   height: 2rem;
@@ -131,6 +137,7 @@ label {
 table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
+  margin-top: 1rem;
 }
 
 table td,
