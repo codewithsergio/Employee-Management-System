@@ -21,14 +21,13 @@ const db = mysql.createConnection({
 app.post("/create", (req, res) => {
   // create "/create" endpoint : HANDLE requests
   const name = req.body.name;
-  const age = req.body.age;
-  const country = req.body.country;
   const position = req.body.position;
+  const task = req.body.task;
   const wage = req.body.wage;
 
   db.query(
-    "INSERT INTO employees (name, age, country, position, wage) VALUES (?,?,?,?,?)",
-    [name, age, country, position, wage],
+    "INSERT INTO employees (name, position, task, wage) VALUES (?,?,?,?)",
+    [name, position, task, wage],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -40,7 +39,7 @@ app.post("/create", (req, res) => {
 });
 
 app.get("/employees", (req, res) => {
-  db.query("SELECT * FROM employees ORDER BY wage DESC", (err, result) => {
+  db.query("SELECT * FROM employees ORDER BY id", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -49,12 +48,64 @@ app.get("/employees", (req, res) => {
   });
 });
 
-app.put("/update", (req, res) => {
+app.get("/employees3", (req, res) => {
+  db.query("SELECT * FROM employees ORDER BY id LIMIT 3", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/employees5", (req, res) => {
+  db.query("SELECT * FROM employees ORDER BY id LIMIT 5", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/search:search", (req, res) => {
+  let search = req.params.search;
+  search = "%" + search + "%";
+  db.query(
+    "SELECT * FROM employees WHERE name LIKE ? OR id LIKE ? OR position LIKE ? OR task LIKE ?",
+    [search, search, search, search],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.put("/updateWage", (req, res) => {
   const id = req.body.id;
   const wage = req.body.wage;
   db.query(
     "UPDATE employees SET wage = ? WHERE id = ?",
     [wage, id],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.put("/updateTask", (req, res) => {
+  const id = req.body.id;
+  const task = req.body.task;
+  db.query(
+    "UPDATE employees SET task = ? WHERE id = ?",
+    [task, id],
     (err, result) => {
       if (err) {
         console.log(err);

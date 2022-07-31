@@ -4,25 +4,30 @@ import Axios from "axios";
 
 function App() {
   const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [country, setCountry] = useState("");
   const [position, setPosition] = useState("");
-  const [wage, setWage] = useState(0);
+  const [task, setTask] = useState(""); // new variable
+  const [wage, setWage] = useState("");
 
   const [employeeList, setEmployeeList] = useState([]);
 
   const [newWage, setNewWage] = useState(0);
+  const [newTask, setNewTask] = useState("");
+
+  const [search, setSearch] = useState("");
 
   const addEmployee = () => {
     Axios.post("http://localhost:3001/create", {
       // access endpoint
       name: name,
-      age: age,
-      country: country,
       position: position,
+      task: task,
       wage: wage,
     }).then(() => {
-      console.log("Sucess!");
+      getEmployees();
+      setName("");
+      setPosition("");
+      setTask("");
+      setWage("");
     });
   };
 
@@ -33,25 +38,60 @@ function App() {
     });
   };
 
+  const get3Employees = () => {
+    Axios.get("http://localhost:3001/employees3").then((response) => {
+      // access endpoint
+      setEmployeeList(response.data);
+    });
+  };
+
+  const get5Employees = () => {
+    Axios.get("http://localhost:3001/employees5").then((response) => {
+      // access endpoint
+      setEmployeeList(response.data);
+    });
+  };
+
   const updateEmployeeWage = (id) => {
-    Axios.put("http://localhost:3001/update", { wage: newWage, id: id }).then(
-      (response) => {
-        setEmployeeList(
-          employeeList.map((val) => {
-            return val.id === id
-              ? {
-                  id: val.id,
-                  name: val.name,
-                  country: val.country,
-                  age: val.age,
-                  position: val.position,
-                  wage: newWage,
-                }
-              : val;
-          })
-        );
-      }
-    );
+    Axios.put("http://localhost:3001/updateWage", {
+      wage: newWage,
+      id: id,
+    }).then((response) => {
+      setEmployeeList(
+        employeeList.map((val) => {
+          return val.id === id
+            ? {
+                id: val.id,
+                name: val.name,
+                position: val.position,
+                task: val.task,
+                wage: newWage,
+              }
+            : val;
+        })
+      );
+    });
+  };
+
+  const updateEmployeeTask = (id) => {
+    Axios.put("http://localhost:3001/updateTask", {
+      task: newTask,
+      id: id,
+    }).then((response) => {
+      setEmployeeList(
+        employeeList.map((val) => {
+          return val.id === id
+            ? {
+                id: val.id,
+                name: val.name,
+                position: val.position,
+                task: newTask,
+                wage: val.wage,
+              }
+            : val;
+        })
+      );
+    });
   };
 
   const deleteEmployee = (id) => {
@@ -65,11 +105,16 @@ function App() {
     });
   };
 
+  const getSearch = (search) => {
+    Axios.get(`http://localhost:3001/search${search}`).then((response) => {
+      // access endpoint
+      setEmployeeList(response.data);
+    });
+  };
+
   return (
     <div className="App">
-      <div className="pageHeader">
-        Employee Database Management System Testing
-      </div>
+      <div className="pageHeader">Project Management System</div>
       <div className="UI">
         <div className="addEmployeeDiv">
           <h2>Add New Employee</h2>
@@ -79,20 +124,7 @@ function App() {
             onChange={(event) => {
               setName(event.target.value);
             }}
-          />
-          <label>Age:</label>
-          <input
-            type="number"
-            onChange={(event) => {
-              setAge(event.target.value);
-            }}
-          />
-          <label>Country:</label>
-          <input
-            type="text"
-            onChange={(event) => {
-              setCountry(event.target.value);
-            }}
+            value={name}
           />
           <label>Position:</label>
           <input
@@ -100,6 +132,15 @@ function App() {
             onChange={(event) => {
               setPosition(event.target.value);
             }}
+            value={position}
+          />
+          <label>Task:</label>
+          <input
+            type="text"
+            onChange={(event) => {
+              setTask(event.target.value);
+            }}
+            value={task}
           />
           <label>Wage (year):</label>
           <input
@@ -107,6 +148,7 @@ function App() {
             onChange={(event) => {
               setWage(event.target.value);
             }}
+            value={wage}
           />
           <button onClick={addEmployee} className="addButton">
             Add
@@ -117,33 +159,67 @@ function App() {
         </div>
         <div className="employees">
           <div>
-            <input type="text" placeholder="Search..." />
-            <button>Show 3</button>
-            <button>Show 5</button>
-            <button>Show All</button>
+            <input
+              type="text"
+              placeholder="Search..."
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
+              value={search}
+            />
+            <button
+              onClick={() => {
+                getSearch(search);
+              }}
+            >
+              Search
+            </button>
+            <button onClick={get3Employees}>Show 3</button>
+            <button onClick={get5Employees}>Show 5</button>
+            <button onClick={getEmployees}>Show All</button>
           </div>
           <table>
             <tr>
+              <th>ID</th>
               <th>Name</th>
-              <th>Age</th>
-              <th>Country</th>
               <th>Position</th>
+              <th>Task</th>
               <th>Wage</th>
+              <th>Update Task</th>
               <th>Update Wage</th>
               <th>Delete Employee</th>
             </tr>
             {employeeList.map((val, key) => {
               return (
                 <tr>
+                  <td>{val.id}</td>
                   <td>{val.name}</td>
-                  <td>{val.age}</td>
-                  <td>{val.country}</td>
                   <td>{val.position}</td>
+                  <td>{val.task}</td>
                   <td>{val.wage}</td>
                   <td>
                     <div>
                       <input
-                        className="editEmployeeWage"
+                        className="editEmployeeInput"
+                        type="text"
+                        onChange={(event) => {
+                          setNewTask(event.target.value);
+                        }}
+                      />
+                      <button
+                        className="employeeButton"
+                        onClick={() => {
+                          updateEmployeeTask(val.id);
+                        }}
+                      >
+                        Update Task
+                      </button>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <input
+                        className="editEmployeeInput"
                         type="number"
                         onChange={(event) => {
                           setNewWage(event.target.value);
@@ -155,7 +231,7 @@ function App() {
                           updateEmployeeWage(val.id);
                         }}
                       >
-                        Update
+                        Update Wage
                       </button>
                     </div>
                   </td>
