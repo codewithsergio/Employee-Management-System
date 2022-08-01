@@ -13,6 +13,8 @@ The Project Management System allows the user to:
 
 -Filter by a specific name, id, position, or task
 
+-Filter by 3, 5, or all employees
+
 https://user-images.githubusercontent.com/51735830/182080980-31b57cf1-c74a-4248-994f-bfb39eeb563c.mp4
 
 This project uses Node js (Express js) for the backend, and uses the MySQL database. 
