@@ -17,4 +17,4 @@ The Project Management System allows the user to:
 
 https://user-images.githubusercontent.com/51735830/182080980-31b57cf1-c74a-4248-994f-bfb39eeb563c.mp4
 
-This project uses React for the frontend, Node.js (Express) for the backend, and uses the MySQL database. 
+This project uses React for the frontend, Node.js (Express) for the backend, and uses SQL with a MySQL database. 
