@@ -10,7 +10,7 @@ function App() {
 
   const [employeeList, setEmployeeList] = useState([]);
 
-  const [newWage, setNewWage] = useState(0);
+  const [newWage, setNewWage] = useState("");
   const [newTask, setNewTask] = useState("");
 
   const [search, setSearch] = useState("");
@@ -115,7 +115,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="pageHeader">Project Management Systemssss</div>
+      <div className="pageHeader">Project Management System</div>
       <div className="UI">
         <div className="addEmployeeDiv">
           <h2>Add New Employee</h2>
