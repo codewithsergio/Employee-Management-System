@@ -113,6 +113,15 @@ function App() {
     });
   };
 
+  const confirmDeletionOf = (val) => {
+    let confirmAction = window.confirm(
+      `Are you sure you want to delete ${val.name} from your records?`
+    );
+    if (confirmAction) {
+      deleteEmployee(val.id);
+    }
+  };
+
   return (
     <div className="App">
       <div className="pageHeader">Project Management System</div>
@@ -247,7 +256,7 @@ function App() {
                     <button
                       className="deleteEmployeeButton"
                       onClick={() => {
-                        deleteEmployee(val.id);
+                        confirmDeletionOf(val);
                       }}
                     >
                       Delete
