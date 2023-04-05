@@ -1,0 +1,135 @@
+.table_component {
+  font-family: "Inter", sans-serif;
+}
+
+.showEmployeesButton {
+  background-color: rgb(254, 120, 80);
+}
+
+.showEmployeesButton:hover {
+  background-color: rgb(159, 56, 25);
+  cursor: pointer;
+  color: white;
+}
+
+.employees {
+  display: flex;
+  flex-direction: column;
+}
+
+.employees h3 {
+  margin: 0;
+}
+
+.employees p {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.employee {
+  padding: 1rem;
+  color: black;
+  background-color: rgb(219, 219, 219);
+  margin-top: 2rem;
+  border: 1px solid black;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.sortButtons {
+  font-weight: 400;
+  border-radius: 0.5rem;
+  background-color: var(--yellow-accent);
+  color: var(--gray-accent);
+  border: 2px solid var(--yellow-accent);
+  padding: 0.25rem 1rem 0.25rem 1rem;
+  transition: all ease-in-out 0.4s;
+}
+
+.sortButtons:hover {
+  transform: scale(1.1);
+  background-color: var(--gray-accent);
+  color: white;
+}
+
+.table_component input {
+  border-radius: 0.25rem;
+  background-color: rgb(213, 213, 213);
+  border: 0;
+  padding: 0.2rem;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+.actionsButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionsButtons .action {
+  margin: 0 0.5rem 0 0.5rem;
+  font-size: 1.2rem;
+  background-color: var(--yellow-accent);
+  color: var(--gray-accent);
+  transition: all ease-in-out 0.4s;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem 0.25rem 1rem;
+  width: max-content;
+  height: max-content;
+  border: 2px solid var(--yellow-accent);
+}
+
+.actionsButtons .action:hover {
+  background-color: var(--gray-accent);
+  color: white;
+}
+
+table th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+
+table th:last-child {
+  border-top-right-radius: 0.5rem;
+}
+
+.tableSortOptions input {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.tableSortOptions input:focus {
+  outline: none;
+}
+
+table td,
+table th {
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:nth-child(odd) {
+  background-color: white;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table tr {
+  color: black;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--yellow-accent);
+  color: var(--gray-accent);
+}

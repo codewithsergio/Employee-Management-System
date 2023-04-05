@@ -1,0 +1,31 @@
+.navbar {
+  background-color: var(--gray-accent);
+  color: white;
+  width: 100vw;
+  height: max-content;
+  padding-bottom: 1rem;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navLinks {
+  margin: 0 2rem 0 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  transition: all 1s;
+}
+
+a.active {
+  color: var(--yellow-accent);
+  background-color: rgba(200, 200, 200, 0.1);
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  border-radius: 0.3rem;
+}

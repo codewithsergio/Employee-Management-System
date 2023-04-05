@@ -84,6 +84,25 @@ app.get("/search:search", (req, res) => {
   );
 });
 
+app.put("/updateEmployee", (req, res) => {
+  const id = req.body.id;
+  const name = req.body.name;
+  const position = req.body.position;
+  const task = req.body.task;
+  const wage = req.body.wage;
+  db.query(
+    "UPDATE employees SET name = ?, position = ?, task = ?, wage = ? WHERE id = ?",
+    [name, position, task, wage, id],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
 app.put("/updateWage", (req, res) => {
   const id = req.body.id;
   const wage = req.body.wage;
