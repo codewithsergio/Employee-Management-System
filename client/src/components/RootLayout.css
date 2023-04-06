@@ -1,6 +1,7 @@
 main {
-  margin-top: 8rem;
+  margin-top: 7rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
 }

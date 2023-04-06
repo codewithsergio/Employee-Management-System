@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Context } from "../context/Context";
 import "./UpdateEmployee.css";
 import Axios from "axios";
+import { NavLink } from "react-router-dom";
 
 function UpdateEmployee() {
   const { dispatch, editData } = useContext(Context);
@@ -29,50 +30,52 @@ function UpdateEmployee() {
 
   return (
     <div className="updateEmployee">
-      <h2>Update Employee</h2>
-      <div>
-        <label>Name:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setName(event.target.value);
-          }}
-          value={name}
-        />
+      <div className="dialog">
+        <h2>Update Employee</h2>
+        <div>
+          <label>Name:</label>
+          <input
+            type="text"
+            onChange={(event) => {
+              setName(event.target.value);
+            }}
+            value={name}
+          />
+        </div>
+        <div>
+          <label>Position:</label>
+          <input
+            type="text"
+            onChange={(event) => {
+              setPosition(event.target.value);
+            }}
+            value={position}
+          />
+        </div>
+        <div>
+          <label>Task:</label>
+          <input
+            type="text"
+            onChange={(event) => {
+              setTask(event.target.value);
+            }}
+            value={task}
+          />
+        </div>
+        <div>
+          <label>Wage (year):</label>
+          <input
+            type="number"
+            onChange={(event) => {
+              setWage(event.target.value);
+            }}
+            value={wage}
+          />
+        </div>
+        <NavLink className="addButton" onClick={updateEmployee} to="/">
+          SUBMIT
+        </NavLink>
       </div>
-      <div>
-        <label>Position:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setPosition(event.target.value);
-          }}
-          value={position}
-        />
-      </div>
-      <div>
-        <label>Task:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setTask(event.target.value);
-          }}
-          value={task}
-        />
-      </div>
-      <div>
-        <label>Wage (year):</label>
-        <input
-          type="number"
-          onChange={(event) => {
-            setWage(event.target.value);
-          }}
-          value={wage}
-        />
-      </div>
-      <button onClick={updateEmployee} className="addButton">
-        SUBMIT
-      </button>
     </div>
   );
 }

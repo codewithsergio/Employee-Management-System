@@ -2,14 +2,22 @@
   font-family: "Inter", sans-serif;
 }
 
-.showEmployeesButton {
-  background-color: rgb(254, 120, 80);
+.searchWIcon {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  width: 20rem;
 }
 
-.showEmployeesButton:hover {
-  background-color: rgb(159, 56, 25);
-  cursor: pointer;
-  color: white;
+.searchWIcon:hover {
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.searchWIcon .iconify {
+  font-size: 1.5rem;
+  padding: 0 0.5rem 0 0.5rem;
 }
 
 .employees {
@@ -40,7 +48,7 @@
   font-weight: 400;
   border-radius: 0.5rem;
   background-color: var(--yellow-accent);
-  color: var(--gray-accent);
+  color: white;
   border: 2px solid var(--yellow-accent);
   padding: 0.25rem 1rem 0.25rem 1rem;
   transition: all ease-in-out 0.4s;
@@ -54,9 +62,13 @@
 
 .table_component input {
   border-radius: 0.25rem;
-  background-color: rgb(213, 213, 213);
   border: 0;
-  padding: 0.2rem;
+  width: max-content;
+  font-size: 1rem;
+  height: max-content;
+  padding: 0.5rem;
+  background-color: transparent;
+  color: var(--gray-accent);
 }
 
 table {
@@ -74,7 +86,7 @@ table {
   margin: 0 0.5rem 0 0.5rem;
   font-size: 1.2rem;
   background-color: var(--yellow-accent);
-  color: var(--gray-accent);
+  color: white;
   transition: all ease-in-out 0.4s;
   border-radius: 1rem;
   padding: 0.25rem 1rem 0.25rem 1rem;
@@ -88,6 +100,10 @@ table {
   color: white;
 }
 
+.conditional {
+  color: var(--gray-accent);
+}
+
 table th:first-child {
   border-top-left-radius: 0.5rem;
 }
@@ -96,9 +112,11 @@ table th:last-child {
   border-top-right-radius: 0.5rem;
 }
 
-.tableSortOptions input {
-  font-size: 1rem;
-  padding: 0.5rem;
+.tableSortOptions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 }
 
 .tableSortOptions input:focus {
@@ -108,6 +126,20 @@ table th:last-child {
 table td,
 table th {
   padding: 8px;
+}
+
+table tr {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+table tr:last-child {
+  border-bottom: 1px solid black;
+}
+
+table tr:first-child {
+  border: none;
+  border-bottom: 1px solid black;
 }
 
 table tr:nth-child(even) {
@@ -131,5 +163,5 @@ table th {
   padding-bottom: 12px;
   text-align: left;
   background-color: var(--yellow-accent);
-  color: var(--gray-accent);
+  color: white;
 }

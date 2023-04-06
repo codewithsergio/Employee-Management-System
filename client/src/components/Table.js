@@ -12,6 +12,8 @@ function Table() {
   const [newTask, setNewTask] = useState("");
 
   const [search, setSearch] = useState("");
+  const [searchNotFound, setSearchNotFound] = useState("");
+
   const getEmployees = () => {
     Axios.get("http://localhost:3001/employees").then((response) => {
       // access endpoint
@@ -33,48 +35,6 @@ function Table() {
     });
   };
 
-  const updateEmployeeWage = (id) => {
-    Axios.put("http://localhost:3001/updateWage", {
-      wage: newWage,
-      id: id,
-    }).then((response) => {
-      setEmployeeList(
-        employeeList.map((val) => {
-          return val.id === id
-            ? {
-                id: val.id,
-                name: val.name,
-                position: val.position,
-                task: val.task,
-                wage: newWage,
-              }
-            : val;
-        })
-      );
-    });
-  };
-
-  const updateEmployeeTask = (id) => {
-    Axios.put("http://localhost:3001/updateTask", {
-      task: newTask,
-      id: id,
-    }).then((response) => {
-      setEmployeeList(
-        employeeList.map((val) => {
-          return val.id === id
-            ? {
-                id: val.id,
-                name: val.name,
-                position: val.position,
-                task: newTask,
-                wage: val.wage,
-              }
-            : val;
-        })
-      );
-    });
-  };
-
   const deleteEmployee = (id) => {
     Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
       setEmployeeList(
@@ -90,6 +50,9 @@ function Table() {
     Axios.get(`http://localhost:3001/search${search}`).then((response) => {
       // access endpoint
       setEmployeeList(response.data);
+      if (response.data.length === 0) {
+        setSearchNotFound(search);
+      }
       setSearch("");
     });
   };
@@ -124,14 +87,19 @@ function Table() {
     <div className="table_component">
       <div className="employees">
         <div className="tableSortOptions">
-          <input
-            type="text"
-            placeholder="Search..."
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-            value={search}
-          />
+          <div className="searchWIcon">
+            <span
+              className="iconify"
+              data-icon="material-symbols:search"
+            ></span>
+            <input
+              type="text"
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
+              value={search}
+            />
+          </div>
           <button
             onClick={() => {
               getSearch(search);
@@ -140,12 +108,12 @@ function Table() {
           >
             Search
           </button>
-          <button onClick={get3Employees} className="sortButtons">
+          {/* <button onClick={get3Employees} className="sortButtons">
             Show 3
           </button>
           <button onClick={get5Employees} className="sortButtons">
             Show 5
-          </button>
+          </button> */}
           <button onClick={getEmployees} className="sortButtons">
             Show All
           </button>
@@ -203,7 +171,10 @@ function Table() {
       ) : (
         <>
           {/* Conditional if no data to be seen */}
-          <p>No data to be seen related to your query!</p>
+          <p className="conditional">
+            Sorry, we couldn't find any results for your search. Please try
+            again with a different search term or check your spelling.
+          </p>
         </>
       )}
     </div>

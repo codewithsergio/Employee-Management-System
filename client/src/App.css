@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(50, 50, 50);
+  background-color: white;
   margin: 0;
 }
 
@@ -12,8 +12,8 @@ body {
 
 :root {
   font-family: "Inter", sans-serif;
-  --yellow-accent: #ffd504;
-  --gray-accent: #2d2d2d;
+  --yellow-accent: #028eff;
+  --gray-accent: #3e3f3c;
 }
 
 .pageHeader {
@@ -52,7 +52,6 @@ h2 {
 }
 
 button {
-  margin-top: 1rem;
   font-size: 1rem;
   font-weight: 700;
   width: 6rem;
