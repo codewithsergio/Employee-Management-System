@@ -15,6 +15,10 @@ The Project Management System allows the user to:
 
 -Filter by 3, 5, or all employees
 
-https://user-images.githubusercontent.com/51735830/182080980-31b57cf1-c74a-4248-994f-bfb39eeb563c.mp4
+
+
+https://user-images.githubusercontent.com/51735830/231451139-3c32845a-3e86-4065-81d1-1e51b68c7220.mp4
+
+
 
 This project uses React for the frontend, Node.js (Express) for the backend, and uses SQL with a MySQL database. 
