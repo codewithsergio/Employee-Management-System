@@ -4,9 +4,13 @@ Project Management CRUD Application to track employees and the tasks they are up
 The Project Management System allows the user to:
 
 -Add an employee to the MySQL database
+
 -View all employees
+
 -Update tasks and wage values for employees
+
 -Delete employees
+
 -Filter by a specific name, id, position, or task
 
 
