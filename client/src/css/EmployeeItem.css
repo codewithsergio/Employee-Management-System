@@ -1,0 +1,7 @@
+.deleteButton {
+    background-color: var(--secondary);
+}
+
+.editButton {
+    background-color: var(--primary);
+}

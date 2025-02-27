@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./AddEmployee.css";
+import "../css/AddEmployee.css";
 import Axios from "axios";
 import { NavLink } from "react-router-dom";
 

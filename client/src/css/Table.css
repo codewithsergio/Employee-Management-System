@@ -47,16 +47,16 @@
 .sortButtons {
   font-weight: 400;
   border-radius: 0.5rem;
-  background-color: var(--yellow-accent);
+  background-color: var(--primary);
   color: white;
-  border: 2px solid var(--yellow-accent);
+  border: 2px solid var(--primary);
   padding: 0.25rem 1rem 0.25rem 1rem;
   transition: all ease-in-out 0.4s;
 }
 
 .sortButtons:hover {
   transform: scale(1.1);
-  background-color: var(--gray-accent);
+  background-color: var(--gray);
   color: white;
 }
 
@@ -68,7 +68,7 @@
   height: max-content;
   padding: 0.5rem;
   background-color: transparent;
-  color: var(--gray-accent);
+  color: var(--gray);
 }
 
 table {
@@ -85,23 +85,22 @@ table {
 .actionsButtons .action {
   margin: 0 0.5rem 0 0.5rem;
   font-size: 1.2rem;
-  background-color: var(--yellow-accent);
   color: white;
-  transition: all ease-in-out 0.4s;
-  border-radius: 1rem;
+  transition: all ease-in-out 0.2s;
+  border-radius: 0.2rem;
   padding: 0.25rem 1rem 0.25rem 1rem;
   width: max-content;
   height: max-content;
-  border: 2px solid var(--yellow-accent);
+  border: 2px solid black;
 }
 
 .actionsButtons .action:hover {
-  background-color: var(--gray-accent);
+  background-color: var(--gray);
   color: white;
 }
 
 .conditional {
-  color: var(--gray-accent);
+  color: var(--gray);
 }
 
 table th:first-child {
@@ -162,6 +161,6 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: var(--yellow-accent);
+  background-color: var(--primary);
   color: white;
 }

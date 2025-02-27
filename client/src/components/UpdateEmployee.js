@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../context/Context";
-import "./UpdateEmployee.css";
+import "../css/UpdateEmployee.css";
 import Axios from "axios";
 import { NavLink } from "react-router-dom";
 

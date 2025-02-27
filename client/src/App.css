@@ -12,8 +12,9 @@ body {
 
 :root {
   font-family: "Inter", sans-serif;
-  --yellow-accent: #028eff;
-  --gray-accent: #3e3f3c;
+  --primary: #028eff;
+  --secondary: #eb4034;
+  --gray: #3e3f3c;
 }
 
 .pageHeader {

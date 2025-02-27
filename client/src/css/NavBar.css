@@ -1,6 +1,6 @@
 .navbar {
   background-color: white;
-  color: var(--gray-accent);
+  color: var(--gray);
   width: 100vw;
   height: max-content;
   padding-bottom: 1rem;
@@ -20,12 +20,12 @@
 
 a {
   text-decoration: none;
-  color: var(--gray-accent);
+  color: var(--gray);
   transition: all 0.2s;
 }
 
 a.active {
-  color: var(--yellow-accent);
+  color: var(--primary);
   background-color: rgba(200, 200, 200, 0.3);
   padding: 0.5rem;
   padding-bottom: 1rem;

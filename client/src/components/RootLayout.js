@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 import { Outlet } from "react-router-dom";
-import "./RootLayout.css";
+import "../css/RootLayout.css";
 
 function RootLayout() {
   return (

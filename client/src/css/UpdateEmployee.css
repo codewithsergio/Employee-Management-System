@@ -1,4 +1,4 @@
-.addEmployee {
+.updateEmployee {
   background-color: rgba(0, 0, 0, 0.1);
   width: 100vw;
   height: 90vh;
@@ -43,7 +43,7 @@
 
 .dialog input:focus {
   outline: none;
-  border-color: var(--yellow-accent);
+  border-color: var(--primary);
 }
 
 .dialog label {
@@ -54,11 +54,11 @@
 
 .dialog .addButton {
   margin-top: 1rem;
-  background-color: var(--yellow-accent);
+  background-color: var(--primary);
   transition: all ease-in-out 0.4s;
   border: none;
   border-radius: 1rem;
-  border: 3px solid var(--yellow-accent);
+  border: 3px solid var(--primary);
   letter-spacing: 0.05rem;
   color: white;
   width: max-content;
@@ -68,7 +68,7 @@
 }
 
 .dialog .addButton:hover {
-  background-color: var(--gray-accent);
+  background-color: var(--gray);
   cursor: pointer;
   color: white;
   transform: scale(1.1);

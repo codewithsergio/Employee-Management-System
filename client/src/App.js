@@ -1,6 +1,4 @@
 import "./App.css";
-import { useState, useEffect } from "react";
-import Login from "./components/Login";
 import Table from "./components/Table";
 import AddEmployee from "./components/AddEmployee";
 import UpdateEmployee from "./components/UpdateEmployee";

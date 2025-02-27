@@ -1,18 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../context/Context";
-import "./Table.css";
+import "../css/Table.css";
 import Axios from "axios";
-import { NavLink } from "react-router-dom";
+import EmployeeItem from "./EmployeeItem";
 
 function Table() {
-  const { dispatch, editData } = useContext(Context);
+  const { dispatch } = useContext(Context);
   const [employeeList, setEmployeeList] = useState([]);
 
-  const [newWage, setNewWage] = useState("");
-  const [newTask, setNewTask] = useState("");
-
   const [search, setSearch] = useState("");
-  const [searchNotFound, setSearchNotFound] = useState("");
 
   const getEmployees = () => {
     Axios.get("http://localhost:3001/employees").then((response) => {
@@ -50,9 +46,6 @@ function Table() {
     Axios.get(`http://localhost:3001/search${search}`).then((response) => {
       // access endpoint
       setEmployeeList(response.data);
-      if (response.data.length === 0) {
-        setSearchNotFound(search);
-      }
       setSearch("");
     });
   };
@@ -120,54 +113,27 @@ function Table() {
         </div>
       </div>
       {employeeList.length > 0 ? (
-        <>
           <table>
-            <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>POSITION</th>
-              <th>TASK</th>
-              <th>WAGE</th>
-              <th>ACTIONS</th>
-            </tr>
-            {employeeList.map((val, key) => {
-              return (
-                <tr>
-                  <td>{val.id}</td>
-                  <td>{val.name}</td>
-                  <td>{val.position}</td>
-                  <td>{val.task}</td>
-                  <td>${parseInt(val.wage, 10) / 1000},000</td>
-                  <td>
-                    <div className="actionsButtons">
-                      <NavLink
-                        className="action"
-                        onClick={() => updateContextValues(val)}
-                        to="updateemployee"
-                      >
-                        <span
-                          className="iconify"
-                          data-icon="material-symbols:edit-square-outline-sharp"
-                        ></span>
-                      </NavLink>
-                      <button
-                        className="action"
-                        onClick={() => {
-                          confirmDeletionOf(val);
-                        }}
-                      >
-                        <span
-                          className="iconify"
-                          data-icon="material-symbols:delete-forever"
-                        ></span>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>POSITION</th>
+                <th>TASK</th>
+                <th>WAGE</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {employeeList.map((val, key) => 
+                <EmployeeItem
+                val={val}
+                key={key}
+                updateContextValues={updateContextValues}
+                confirmDeletionOf={confirmDeletionOf}/>
+              )}
+            </tbody>
           </table>
-        </>
       ) : (
         <>
           {/* Conditional if no data to be seen */}
